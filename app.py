@@ -73,7 +73,7 @@ class PlayerRecommendationAPP:
         base_dir = Path(__file__).resolve().parent.parent
         fm_image = base_dir / "data" / 'scouter_image2.png'
 
-        st.sidebar.image(fm_image)
+        st.sidebar.image(str(fm_image))
 
         if not player_input:
             st.write("선수를 선택해 주세요")
