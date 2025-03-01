@@ -4,16 +4,16 @@ import pandas as pd
 from ast import literal_eval
 from FMSCOUT.skill_calculator import FieldPlayerSkillCalculator
 from FMSCOUT.skill_calculator import GKSkillCalculator
-
+from pathlib import Path
 
 class DataManager:
     def __init__(self):
-        url = 'https://raw.githubusercontent.com/yfb2022/AISCOUT/refs/heads/main/player%20data/'
-
-        self.rest_df_scl = pd.read_csv(url + 'rest_df_scl.csv')
-        self.rest_df = pd.read_csv(url + 'rest_df.csv')
-        self.GK_df_scl = pd.read_csv(url + 'GK_df_scl.csv')
-        self.GK_df = pd.read_csv(url + 'GK_df.csv')
+        base_dir = Path(__file__).resolve().parent.parent
+        data_path = base_dir / "data"
+        self.rest_df_scl = pd.read_csv(data_path / 'rest_df_scl.csv')
+        self.rest_df = pd.read_csv(data_path / 'rest_df.csv')
+        self.GK_df_scl = pd.read_csv(data_path / 'GK_df_scl.csv')
+        self.GK_df = pd.read_csv(data_path / 'GK_df.csv')
 
         self.rest_df.loc[self.rest_df['pics'] == 'None', 'pics'] = (
             'https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=1'
@@ -42,6 +42,6 @@ class DataManager:
         return temp_df, temp_df_scl, categories, skill_calc
 
     def get_all_player_names(self):
-        names = list(self.rest_df['Name'].values) + list(self.GK_df['Name'].values)
+        names = self.rest_df['Name'].to_list() + self.GK_df['Name'].to_list()
         names.append('')
         return names

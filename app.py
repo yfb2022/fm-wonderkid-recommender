@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import flagpy as fp
 import requests
 from io import BytesIO
+from pathlib import Path
 
 from FMSCOUT.data_manager import DataManager
 from FMSCOUT.similarity_calculator import SimilarityCalculator
@@ -69,7 +70,9 @@ class PlayerRecommendationAPP:
         player_names = self.data_manager.get_all_player_names()
         player_input = st.sidebar.selectbox('게임 내 좋아하는 선수를 입력하세요: ', player_names, index=7755)
         threshold_input = st.sidebar.number_input('최대 나이를 입력해주세요 (~ 25): ', 0, 99)
-        fm_image = 'https://github.com/yfb2022/AISCOUT/blob/main/streamlit_file/scouter_image2.png?raw=true'
+        base_dir = Path(__file__).resolve().parent.parent
+        fm_image = base_dir / "data/scouter_image2.png"
+
         st.sidebar.image(fm_image)
 
         if not player_input:
