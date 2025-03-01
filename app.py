@@ -157,7 +157,7 @@ class PlayerRecommendationAPP:
         response = requests.get(image_address)
         img = Image.open(BytesIO(response.content))
         with col2:
-            st.image(img)
+            st.image(image_address)
         with col3:
             st.metric(label="유사도", value=f"{first_similar_player['similarity'] * 100}%")
 
