@@ -10,10 +10,10 @@ class DataManager:
     def __init__(self):
         base_dir = Path(__file__).resolve().parent.parent
         data_path = base_dir / "data"
-        self.rest_df_scl = pd.read_csv(data_path / 'rest_df_scl.csv')
-        self.rest_df = pd.read_csv(data_path / 'rest_df.csv')
-        self.GK_df_scl = pd.read_csv(data_path / 'GK_df_scl.csv')
-        self.GK_df = pd.read_csv(data_path / 'GK_df.csv')
+        self.rest_df_scl = pd.read_csv(str(data_path / 'rest_df_scl.csv'))
+        self.rest_df = pd.read_csv(str(data_path / 'rest_df.csv'))
+        self.GK_df_scl = pd.read_csv(str(data_path / 'GK_df_scl.csv'))
+        self.GK_df = pd.read_csv(str(data_path / 'GK_df.csv'))
 
         self.rest_df.loc[self.rest_df['pics'] == 'None', 'pics'] = (
             'https://img.a.transfermarkt.technology/portrait/header/default.jpg?lm=1'
