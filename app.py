@@ -70,8 +70,7 @@ class PlayerRecommendationAPP:
         player_names = self.data_manager.get_all_player_names()
         player_input = st.sidebar.selectbox('게임 내 좋아하는 선수를 입력하세요: ', player_names, index=7755)
         threshold_input = st.sidebar.number_input('최대 나이를 입력해주세요 (~ 25): ', 0, 99)
-        base_dir = Path(__file__).resolve().parent.parent
-        fm_image = base_dir / "data" / 'scouter_image2.png'
+        fm_image = 'https://github.com/yfb2022/fm-wonderkid-recommender/blob/master/data/scouter_image2.png?raw=true'
 
         st.sidebar.image(str(fm_image))
 
