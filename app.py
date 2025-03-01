@@ -1,12 +1,8 @@
 # app.py
 import pandas as pd
 import streamlit as st
-from PIL import Image
 import plotly.graph_objects as go
 import flagpy as fp
-import requests
-from io import BytesIO
-from pathlib import Path
 
 from FMSCOUT.data_manager import DataManager
 from FMSCOUT.similarity_calculator import SimilarityCalculator
@@ -154,8 +150,6 @@ class PlayerRecommendationAPP:
         default_image_url = "https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
         pics_row['pics'] = pics_row['pics'].replace(float('nan'), default_image_url)
         image_address = pics_row['pics'].values[0]
-        response = requests.get(image_address)
-        img = Image.open(BytesIO(response.content))
         with col2:
             st.image(image_address)
         with col3:
