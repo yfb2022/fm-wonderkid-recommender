@@ -72,7 +72,7 @@ class PlayerRecommendationAPP:
         threshold_input = st.sidebar.number_input('최대 나이를 입력해주세요 (~ 25): ', 0, 99)
         fm_image = 'https://github.com/yfb2022/fm-wonderkid-recommender/blob/master/data/scouter_image2.png?raw=true'
 
-        st.sidebar.image(str(fm_image))
+        st.sidebar.image(fm_image)
 
         if not player_input:
             st.write("선수를 선택해 주세요")
